@@ -1,7 +1,7 @@
-import age, { comments, data } from "../data/data"
+import { comments, data } from "../data/data"
 
 const HomePage = () => {
-  console.log(age);
+
 
   return (
     <div>
