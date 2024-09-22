@@ -1,28 +1,12 @@
-import { comments, data } from "../data/data"
+import Header from "../components/Header"
 
 const HomePage = () => {
-
-
   return (
     <div>
+      <Header />
 
-      {data.map((d, i) => {
-
-        return <h1 key={i}>{d}</h1>;
-      })}
-
-      {comments.map((comment) => {
-        return <div key={comment.id}>
-          <h1>{comment.email}</h1>
-          <p>{comment.body}</p>
-          <p>{comment.body}</p>
-
-        </div>
-      })}
 
     </div>
   )
 }
-
 export default HomePage
-
