@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import RootLayout from "./components/RootLayout";
 
 
 const App = () => {
@@ -10,25 +11,30 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <HomePage />
+      element: <RootLayout />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />
+        },
+
+        {
+          path: 'about-page',
+          element: <About />
+        },
+        {
+          path: 'contact-page',
+          element: <Contact />
+        },
+      ]
     },
-    {
-      path: 'about-page',
-      element: <About />
-    },
-    {
-      path: 'contact-page',
-      element: <Contact />
-    },
+
     {
       path: '*',
       element: <NotFound />
     }
 
   ]);
-
-
-
 
   return <RouterProvider router={router} />
 }
