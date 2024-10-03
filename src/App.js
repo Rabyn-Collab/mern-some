@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import RootLayout from "./components/RootLayout";
+import CategoryItems from "./pages/CategoryItems";
 
 
 const App = () => {
@@ -17,6 +18,15 @@ const App = () => {
           index: true,
           element: <HomePage />
         },
+        {
+          path: 'category-items/:category',
+          element: <CategoryItems />
+        },
+
+
+
+
+
 
         {
           path: 'about-page',
