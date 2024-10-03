@@ -1,8 +1,10 @@
 import { Card, CardBody, Typography, Avatar } from "@material-tailwind/react";
+import { useNavigate } from "react-router";
 
 
 
 export function CardList({ meals }) {
+  const nav = useNavigate();
   return (
     <Card className="max-w-[40%]">
       <CardBody>
@@ -15,8 +17,10 @@ export function CardList({ meals }) {
         <div className="divide-y divide-gray-200">
           {meals.map(({ strMeal, strMealThumb, idMeal }) => (
             <div
+              onClick={() => nav(`/detail/${idMeal}`)}
+
               key={idMeal}
-              className="flex items-center justify-between pb-3 pt-3 last:pb-0"
+              className="flex items-center justify-between pb-3 pt-3 last:pb-0 cursor-pointer"
             >
               <div className="flex items-center gap-x-3">
                 <Avatar size="sm" src={strMealThumb} alt={idMeal} />

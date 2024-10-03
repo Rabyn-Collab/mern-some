@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import RootLayout from "./components/RootLayout";
 import CategoryItems from "./pages/CategoryItems";
+import ItemDetail from "./pages/ItemDetail";
 
 
 const App = () => {
@@ -22,10 +23,10 @@ const App = () => {
           path: 'category-items/:category',
           element: <CategoryItems />
         },
-
-
-
-
+        {
+          path: 'detail/:id',
+          element: <ItemDetail />
+        },
 
 
         {
