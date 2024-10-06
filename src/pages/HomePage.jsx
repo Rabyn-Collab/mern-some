@@ -1,43 +1,45 @@
 import axios from "axios"
+import ProductCard from "../components/ProductCard"
 import { useEffect, useState } from "react"
-import { CardCompo } from "../components/CardCompo";
+import { BlogCard } from "../components/BlogCard";
 
 const HomePage = () => {
 
   const [data, setData] = useState();
-  const [load, setLoad] = useState();
-  const [err, setErr] = useState();
 
   const getData = async () => {
-    setLoad(true);
     try {
-      const response = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
-      setLoad(false);
-      setData(response.data);
+
+      const response = await axios.get('https://dummyjson.com/quotes');
+
+      setData(response.data.quotes);
+
     } catch (err) {
-      setLoad(false);
-      setErr(err.messgae);
-
+      console.log(err);
     }
-
   }
 
-
+  // getData();
 
   useEffect(() => {
     getData();
   }, []);
 
-  if (load) {
-    return <h1>Loading....</h1>
-  }
+  console.log(data);
 
 
   return (
-    <div className="p-5 grid grid-cols-3 gap-6">
-      {data && data.categories.map((cata) => {
-        return <CardCompo key={cata.idCategory} cata={cata} />
-      })}
+    <div className="p-4 grid grid-cols-4 gap-4">
+      {data && data.map((item) => (
+        <BlogCard text={item.quote} />
+        // <ProductCard image={item.image} text={item.quote} />
+      ))}
+
+      {/* <ProductCard image={'assets/snim.jpg'} text={'hello 1'} />
+      <ProductCard image={'assets/MERN-stack-1.png'} text={'hello 2'} />
+      <ProductCard image={'assets/Screenshot_1.png'} text={'hello 3'} /> */}
+
+
 
 
 

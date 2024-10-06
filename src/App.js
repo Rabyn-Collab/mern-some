@@ -1,11 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from "./pages/HomePage";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import RootLayout from "./components/RootLayout";
-import CategoryItems from "./pages/CategoryItems";
-import ItemDetail from "./pages/ItemDetail";
+import SamplePage from "./pages/SamplePage";
+
 
 
 const App = () => {
@@ -19,24 +17,13 @@ const App = () => {
           index: true,
           element: <HomePage />
         },
+
         {
-          path: 'category-items/:category',
-          element: <CategoryItems />
-        },
-        {
-          path: 'detail/:id',
-          element: <ItemDetail />
+          path: 'sample',
+          element: <SamplePage />
         },
 
 
-        {
-          path: 'about-page',
-          element: <About />
-        },
-        {
-          path: 'contact-page',
-          element: <Contact />
-        },
       ]
     },
 
