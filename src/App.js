@@ -1,9 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from "./pages/HomePage";
-import NotFound from "./pages/NotFound";
 import RootLayout from "./components/RootLayout";
-import SamplePage from "./pages/SamplePage";
-
 
 
 const App = () => {
@@ -18,19 +15,13 @@ const App = () => {
           element: <HomePage />
         },
 
-        {
-          path: 'sample',
-          element: <SamplePage />
-        },
+
 
 
       ]
     },
 
-    {
-      path: '*',
-      element: <NotFound />
-    }
+
 
   ]);
 
