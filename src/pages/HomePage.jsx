@@ -1,10 +1,13 @@
-import AddForm from "./AddForm"
+import { useSelector } from "react-redux"
+
 
 const HomePage = () => {
+
+  const { posts } = useSelector((state) => state.postSlice);
+
   return (
     <div>
 
-      <AddForm />
 
 
 
