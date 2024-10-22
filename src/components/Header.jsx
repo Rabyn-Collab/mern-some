@@ -28,7 +28,7 @@ const Header = () => {
 
 
       <nav className="space-x-5 sm:hidden">
-        <NavLink to={'/about-page'}>About</NavLink>
+        <NavLink to={'/add-form'}>AddForm</NavLink>
         <NavLink to={'/contact-page'}>Contact</NavLink>
       </nav>
 

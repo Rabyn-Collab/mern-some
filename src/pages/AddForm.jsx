@@ -1,6 +1,9 @@
 import { Button, Input, Option, Radio, Select, Textarea, Typography } from "@material-tailwind/react"
 import { Formik } from "formik"
+import { useDispatch } from "react-redux";
 import * as Yup from 'yup';
+import { addPost } from "../redux/postSlice";
+import { useNavigate } from "react-router";
 
 
 const valSchema = Yup.object({
@@ -11,6 +14,9 @@ const valSchema = Yup.object({
 })
 
 const AddForm = () => {
+
+  const dispatch = useDispatch();
+  const nav = useNavigate();
 
 
   return (
@@ -24,7 +30,8 @@ const AddForm = () => {
           country: ''
         }}
         onSubmit={(val) => {
-          console.log(val);
+          dispatch(addPost(val));
+          nav(-1);
         }}
         validationSchema={valSchema}
       >
