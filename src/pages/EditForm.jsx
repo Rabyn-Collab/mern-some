@@ -1,23 +1,24 @@
 import { Button, Input, Option, Radio, Select, Textarea, Typography } from "@material-tailwind/react"
 import { Formik } from "formik"
-import { useDispatch } from "react-redux";
-import * as Yup from 'yup';
-import { addPost } from "../redux/postSlice";
-import { useNavigate } from "react-router";
-import { nanoid } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePost } from "../redux/postSlice";
+import { useNavigate, useParams } from "react-router";
+import { valSchema } from "./AddForm";
 
 
-export const valSchema = Yup.object({
-  title: Yup.string().min(5).max(30).required(),
-  detail: Yup.string().required(),
-  pLang: Yup.string().required(),
-  country: Yup.string().required(),
-})
 
-const AddForm = () => {
+
+const EditForm = () => {
+
+  const { id } = useParams();
 
   const dispatch = useDispatch();
   const nav = useNavigate();
+  const { posts } = useSelector((state) => state.postSlice);
+
+  const post = posts.find((post) => post.id === id);
+
+
 
 
   return (
@@ -25,13 +26,13 @@ const AddForm = () => {
       <Typography variant="h4" className="mb-4">Add a Post</Typography>
       <Formik
         initialValues={{
-          title: '',
-          detail: '',
-          pLang: '',
-          country: ''
+          title: post.title,
+          detail: post.detail,
+          pLang: post.pLang,
+          country: post.country
         }}
         onSubmit={(val) => {
-          dispatch(addPost({ ...val, id: nanoid() }));
+          dispatch(updatePost({ ...val, id: post.id }));
           nav(-1);
         }}
         validationSchema={valSchema}
@@ -54,11 +55,13 @@ const AddForm = () => {
                 <Radio
                   name="pLang"
                   label="HTML"
+                  checked={values.pLang === "HTML"}
                   onChange={handleChange} value="HTML" />
                 <Radio
                   name="pLang"
                   label="React"
                   value="REACT"
+                  checked={values.pLang === "REACT"}
                   onChange={handleChange} />
               </div>
 
@@ -69,6 +72,7 @@ const AddForm = () => {
 
             <div className="w-72">
               <Select
+                value={values.country}
                 onChange={(e) => setFieldValue('country', e)}
                 name="country"
                 label="Select Country">
@@ -103,4 +107,4 @@ const AddForm = () => {
     </div>
   )
 }
-export default AddForm
+export default EditForm

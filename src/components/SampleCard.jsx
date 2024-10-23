@@ -7,8 +7,10 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { CustomDialog } from "./CustomDialog";
+import { useNavigate } from "react-router";
 
-export function SampleCard({ post: { title, detail, pLang, country }, index }) {
+export function SampleCard({ post: { title, detail, pLang, country, id }, index }) {
+  const nav = useNavigate();
   return (
     <Card className="">
       <CardBody>
@@ -46,7 +48,7 @@ export function SampleCard({ post: { title, detail, pLang, country }, index }) {
 
           <div className="flex justify-end gap-4">
 
-            <IconButton color="green" size="sm">
+            <IconButton onClick={() => nav(`/edit-form/${id}`)} color="green" size="sm">
               <i className="fas fa-edit" />
             </IconButton>
 
